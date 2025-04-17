@@ -65,9 +65,9 @@ Total Gaji              : Rp`.....`
 
 
 ## MY Result:
-[Asep's Result](ResultAsep.png)
+![Asep's Result](ResultAsep.png)
 
 
-[Ujang's Result](ResultUjang.png)
+![Ujang's Result](ResultUjang.png)
 
 
