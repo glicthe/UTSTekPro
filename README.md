@@ -46,6 +46,8 @@ the task is about making a pay slip, plus the allowance given in a specific cond
 * **Ujang** is a Parttime Staff Programmer, not married, working since January 1, 2024. and on march 25, 2025 the current project was completed.
   * On March 15th (Saturday), **Ujang** overtime from `03:00` to `18:00`.
   * On March 16th (Sunday), **Ujang** overtime from `10:00` to `14:00`.
+<br>
+<br>
 
 ### **Format for the Pay Slip:**
 =======Slip Gaji Bulan Maret=======\
@@ -62,11 +64,12 @@ Total Pinjaman Koperasi : Rp`.....`
 > _**Note**: Cooperative loan and other allowance only for Fulltime_
 
 Total Gaji              : Rp`.....`
-
-
-## MY Result:
+<br>
+<br>
+<br>
+<br>
+## **My Result**:
 ![Asep's Result](ResultAsep.png)
-
 
 ![Ujang's Result](ResultUjang.png)
 
