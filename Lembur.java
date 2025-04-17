@@ -14,6 +14,10 @@ public class Lembur {
         this.tarifLembur = hitungTarifLembur();
     }
 
+    private double totalJamLembur() {
+        return java.time.Duration.between(jamMulai, jamSelesai).toHours();
+    }
+
     private double hitungTarifLembur() {
         // Cek apakah hari Sabtu/Minggu
         if (tanggal.getDayOfWeek().getValue() >= 6) {
@@ -32,4 +36,5 @@ public class Lembur {
     public LocalTime getJamMulai() { return jamMulai; }
     public LocalTime getJamSelesai() { return jamSelesai; }
     public double getTarifLembur() { return tarifLembur; }
+    public double getTotalJamLembur() { return totalJamLembur(); }
 } 

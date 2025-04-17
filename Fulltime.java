@@ -6,30 +6,15 @@ public class Fulltime extends Employee implements Koperasi {
     private static final double PRODUCTIVITY_BONUS_PERCENTAGE = 0.10;
     private double loanMonthly;
 
-    public Fulltime(String name, String id, LocalDate joinDate, String position, double basicSalary, Department department) {
-        super(name, id, joinDate, position, basicSalary, department);
+    public Fulltime(String name, LocalDate joinDate, double basicSalary, Department department) {
+        super(name, joinDate, basicSalary, department);
         this.loanMonthly = 0;
     }
 
-    private double calculatePositionAllowance() {
-        switch (position.toLowerCase()) {
-            case "manager":
-                return 3000000;
-            case "supervisor":
-                return 2000000;
-            case "staff":
-                return 1000000;
-            default:
-                return 0;
-        }
-    }
 
     @Override
     public double calculateSalary() {
         double totalSalary = basicSalary;
-        
-        // Position allowance
-        totalSalary += calculatePositionAllowance();
         
         // Child allowance (maximum 3 children)
         totalSalary += (numberOfChildren * CHILD_ALLOWANCE);

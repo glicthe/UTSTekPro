@@ -4,8 +4,8 @@ public class Parttime extends Employee {
     private static final double PROJECT_BONUS = 200000;
     private int completedProjects;
 
-    public Parttime(String name, String id, LocalDate joinDate, String position, double basicSalary, Department department) {
-        super(name, id, joinDate, position, basicSalary, department);
+    public Parttime(String name, LocalDate joinDate, double basicSalary, Department department) {
+        super(name, joinDate, basicSalary, department);
         this.completedProjects = 0;
     }
 

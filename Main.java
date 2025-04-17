@@ -3,14 +3,12 @@ import java.time.LocalTime;
 
 public class Main {
     public static void main(String[] args) {
-        Department itDepartment = new Department("Information Technology", "IT001");
+        Department itDepartment = new Department("Staff Programmer");
 
         // Asep (fulltime)
         Fulltime asep = new Fulltime(
             "Asep",
-            "K001",
             LocalDate.of(2021, 1, 1),
-            "Staff",
             5000000,
             itDepartment
         );
@@ -32,9 +30,7 @@ public class Main {
         // Ujang (parttime)
         Parttime ujang = new Parttime(
             "Ujang",
-            "K002",
             LocalDate.of(2024, 1, 1),
-            "Staff",
             3000000,
             itDepartment
         );
@@ -52,9 +48,6 @@ public class Main {
             LocalTime.of(14, 0)
         ));
 
-        System.out.println("===========================================");
-        System.out.println("                 SLIP GAJI                ");
-        System.out.println("===========================================");
         
         printSalarySlip(asep, "Maret", 2024);
         System.out.println("\n");
@@ -62,39 +55,48 @@ public class Main {
     }
     
     private static void printSalarySlip(Employee employee, String bulan, int tahun) {
-        System.out.println("Nama Karyawan    : " + employee.getName());
-        System.out.println("ID Karyawan      : " + employee.getId());
-        System.out.println("Jabatan          : " + employee.getPosition());
-        System.out.println("Departemen       : " + employee.getDepartmentName());
-        System.out.println("Periode          : " + bulan + " " + tahun);
-        System.out.println("-------------------------------------------");
-        System.out.println("RINCIAN GAJI:");
-        System.out.println("Gaji Pokok       : Rp " + formatRupiah(employee.getBasicSalary()));
+        System.out.println("===========================================");
+        System.out.println("           SLIP GAJI BULAN MARET           ");
+        System.out.println("===========================================");
+        System.out.println("Tanggal Terbit: 1 April 2025");
+        System.out.println("Tanggal Pembayaran: 1 April 2025");
+        System.out.println();
+        System.out.println();
+        System.out.println("Nama                       : " + employee.getName());
+        System.out.println("Jabatan                    : " + employee.getDepartmentName());
+
+        int totalJamLembur = employee.getOvertimeList().stream()
+                .mapToInt(overtime -> (int) java.time.Duration.between(overtime.getJamMulai(), overtime.getJamSelesai()).toHours())
+                .sum();
+        int totalJamKerja = 176 + totalJamLembur; // 176 jam kerja normal dalam sebulan
+        System.out.println("Total Jam Kerja            : " + totalJamKerja + " jam");
+        System.out.println("Total Lembur               : " + totalJamLembur + " jam");
+
         
         if (employee instanceof Fulltime) {
             Fulltime ft = (Fulltime) employee;
-            System.out.println("Tunjangan Jabatan: Rp " + formatRupiah(1000000));
-            System.out.println("Tunjangan Anak   : Rp " + formatRupiah(ft.getNumberOfChildren() * 500000));
-            System.out.println("Tunjangan Kom    : Rp 500.000");
+            System.out.println("Tunjangan Jabatan          : Rp " + formatRupiah(1000000));
+            System.out.println("Tunjangan Anak             : Rp " + formatRupiah(ft.getNumberOfChildren() * 500000));
+            System.out.println("Tunjangan Komunikasi       : Rp 500.000");
         }
         
         double totalOvertime = employee.getOvertimeList().stream()
                 .mapToDouble(Lembur::hitungTotalLembur)
                 .sum();
-        System.out.println("Tunjangan Lembur : Rp " + formatRupiah(totalOvertime));
+        System.out.println("Tunjangan Lembur           : Rp " + formatRupiah(totalOvertime));
         
         if (employee instanceof Parttime) {
             Parttime pt = (Parttime) employee;
-            System.out.println("Bonus Proyek     : Rp " + formatRupiah(pt.getCompletedProjects() * 200000));
+            System.out.println("Bonus Proyek               : Rp " + formatRupiah(pt.getCompletedProjects() * 200000));
         }
         
         if (employee instanceof Fulltime) {
             Fulltime ft = (Fulltime) employee;
-            System.out.println("Pinjaman Koperasi: Rp " + formatRupiah(ft.getLoanMonthly()));
+            System.out.println("Total Pinjaman Koperasi    : Rp " + formatRupiah(ft.getLoanMonthly()));
         }
         
         System.out.println("-------------------------------------------");
-        System.out.println("TOTAL GAJI       : Rp " + formatRupiah(employee.calculateSalary()));
+        System.out.println("TOTAL GAJI                 : Rp " + formatRupiah(employee.calculateSalary()));
         System.out.println("===========================================");
     }
     

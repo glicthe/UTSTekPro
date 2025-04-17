@@ -5,22 +5,18 @@ import java.util.List;
 // Employee.java
 public abstract class Employee {
     protected String name;
-    protected String id;
     protected LocalDate joinDate;
-    protected String position;
     protected double basicSalary;
     protected List<Lembur> overtimeList;
     protected int numberOfChildren;
     protected Department department;
 
-    public Employee(String name, String id, LocalDate joinDate, String position, double basicSalary, Department department) {
+    public Employee(String name, LocalDate joinDate, double basicSalary, Department department) {
         this.name = name;
-        this.id = id;
         this.joinDate = joinDate;
-        this.position = position;
         this.basicSalary = basicSalary;
         this.department = department;
-        this.overtimeList = new ArrayList<>();
+        this.overtimeList = new ArrayList<>(); // Jam lembur 
         this.numberOfChildren = 0;
     }
 
@@ -36,9 +32,7 @@ public abstract class Employee {
 
     // Getters
     public String getName() { return name; }
-    public String getId() { return id; }
     public LocalDate getJoinDate() { return joinDate; }
-    public String getPosition() { return position; }
     public double getBasicSalary() { return basicSalary; }
     public List<Lembur> getOvertimeList() { return overtimeList; }
     public int getNumberOfChildren() { return numberOfChildren; }
